@@ -1,19 +1,17 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mycompany.myapp.json.ObjectIdToStringDeserializer;
 import com.mycompany.myapp.json.StringToObjectIdSerializer;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 
 @Document(collection = "department")
@@ -21,6 +19,7 @@ public class Department implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    
     @JsonSerialize(using = StringToObjectIdSerializer.class)
     @JsonDeserialize(using = ObjectIdToStringDeserializer.class )
     @JsonProperty("_id")
@@ -36,10 +35,13 @@ public class Department implements Serializable {
     @Field("university")
     private String university;
 
-    @DBRef
     @Field("students")
-    @JsonIgnoreProperties(value = { "departments" }, allowSetters = true)
-    private Set<Student> students = new HashSet<>();
+    List<RefType> students = new ArrayList<>();
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -95,30 +97,30 @@ public class Department implements Serializable {
         this.university = university;
     }
 
-    public Set<Student> getStudents() {
+    public List<RefType> getStudents() {
         return this.students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<RefType> students) {
         this.students = students;
     }
 
-    public Department students(Set<Student> students) {
+    public Department students(List<RefType> students) {
         this.setStudents(students);
         return this;
     }
 
-    public Department addStudent(Student student) {
-        this.students.add(student);
-        student.getDepartments().add(this);
-        return this;
-    }
+    // public Department addStudent(Student student) {
+    //     this.students.add(student);
+    //     student.getDepartments().add(this);
+    //     return this;
+    // }
 
-    public Department removeStudent(Student student) {
-        this.students.remove(student);
-        student.getDepartments().remove(this);
-        return this;
-    }
+    // public Department removeStudent(Student student) {
+    //     this.students.remove(student);
+    //     student.getDepartments().remove(this);
+    //     return this;
+    // }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

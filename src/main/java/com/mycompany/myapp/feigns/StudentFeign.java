@@ -17,10 +17,10 @@ import com.mycompany.myapp.domain.Student1;
 @FeignClient(name = "student-feign", url = "http://localhost:8080/jhipsterRest")
 public interface StudentFeign {
     @GetMapping("/student")
-    public List<Student> getAll();
+    public List<Student> getAllStud();
 
     @GetMapping("/student/{id}")
-    public Optional<Student> getOne(@PathVariable String id);
+    public Optional<Student> getOneStud(@PathVariable String id);
 
     @PostMapping("/student1/")
     public Student1 addOne(Student1 student1);

@@ -24,8 +24,10 @@ public class StudentService1 {
         return studentRepository1.findAll();
     }
 
-    public Optional<Student> getOne(String id){
-        return studentFeign.getOne(id);
+    public Optional<Student1> getOne(String id){
+        // return studentFeign.getOne(id);
+        return studentRepository1.findById(id);
+
     }
 
     public Student1 addStudent1(Student1 student1){

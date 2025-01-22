@@ -65,7 +65,7 @@ public class StudentService {
         // List<Student> students = studentFeign.getAll();
         // log.debug("Received students: {}", students);
         // return students;
-        return studentFeign.getAll();
+        return studentFeign.getAllStud();
         // return studentRepository.findAllWithEagerRelationships();
     }
 
@@ -75,8 +75,8 @@ public class StudentService {
 
     public Optional<Student> findOne(String id) {
         log.debug("Request to get Student : {}", id);
-        // return studentFeign.getOne(id);
-        return studentRepository.findOneWithEagerRelationships(id);
+        return studentFeign.getOneStud(id);
+        // return studentRepository.findOneWithEagerRelationships(id);
     }
 
     public void delete(String id) {
