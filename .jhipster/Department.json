@@ -1,0 +1,34 @@
+{
+  "changelogDate": "20250120064521",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "university",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    }
+  ],
+  "name": "Department",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "department",
+      "ownerSide": true,
+      "relationshipName": "student",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

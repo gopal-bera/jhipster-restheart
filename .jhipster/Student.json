@@ -1,0 +1,40 @@
+{
+  "changelogDate": "20250120064222",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "stream",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "course",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "percentage",
+      "fieldType": "Float",
+      "fieldValidateRules": []
+    }
+  ],
+  "name": "Student",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "student",
+      "ownerSide": true,
+      "relationshipName": "department",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}
